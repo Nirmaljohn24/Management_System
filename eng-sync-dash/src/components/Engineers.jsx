@@ -48,7 +48,7 @@ const Engineers = () => {
       try {
         const token = localStorage.getItem('token');
         const headers = { 'Authorization': `Bearer ${token}` };
-        const res = await fetch('http://localhost:5000/api/engineers', { headers });
+        const res = await fetch('https://management-system-1-884g.onrender.com/api/engineers', { headers });
         const data = await res.json();
         setEngineers(data);
         setFilteredEngineers(data);
@@ -78,7 +78,7 @@ const Engineers = () => {
     };
     try {
       if (editingEngineer) {
-        const res = await fetch(`http://localhost:5000/api/engineers/${editingEngineer.id}`, {
+        const res = await fetch(`https://management-system-1-884g.onrender.com/api/engineers/${editingEngineer.id}`, {
           method: 'PUT',
           headers,
           body: JSON.stringify({ ...formData, skills: formData.skills.split(',').map(s => s.trim()) })
@@ -89,7 +89,7 @@ const Engineers = () => {
         setFilteredEngineers(engineers.map(e => e.id === updated.id ? updated : e));
         toast({ title: 'Engineer updated', description: 'Engineer information has been updated successfully.' });
       } else {
-        const res = await fetch('http://localhost:5000/api/engineers', {
+        const res = await fetch('https://management-system-1-884g.onrender.com/api/engineers', {
           method: 'POST',
           headers,
           body: JSON.stringify({ ...formData, skills: formData.skills.split(',').map(s => s.trim()) })
@@ -119,7 +119,7 @@ const Engineers = () => {
     const token = localStorage.getItem('token');
     const headers = { 'Authorization': `Bearer ${token}` };
     try {
-      const res = await fetch(`http://localhost:5000/api/engineers/${id}`, {
+      const res = await fetch(`https://management-system-1-884g.onrender.com/api/engineers/${id}`, {
         method: 'DELETE',
         headers
       });

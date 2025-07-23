@@ -30,7 +30,7 @@ const Dashboard = () => {
       try {
         const token = localStorage.getItem('token');
         const headers = { 'Authorization': `Bearer ${token}` };
-        const res = await fetch('http://localhost:5000/api/dashboard/stats', { headers });
+        const res = await fetch('https://management-system-1-884g.onrender.com/api/dashboard/stats', { headers });
         const stats = await res.json();
         setDashboardData({
           engineers: stats.totalEngineers,

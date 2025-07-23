@@ -45,9 +45,9 @@ const Assignments = () => {
         const token = localStorage.getItem('token');
         const headers = { 'Authorization': `Bearer ${token}` };
         const [engRes, projRes, assignRes] = await Promise.all([
-          fetch('http://localhost:5000/api/engineers', { headers }),
-          fetch('http://localhost:5000/api/projects', { headers }),
-          fetch('http://localhost:5000/api/assignments', { headers })
+          fetch('https://management-system-1-884g.onrender.com/api/engineers', { headers }),
+          fetch('https://management-system-1-884g.onrender.com/api/projects', { headers }),
+          fetch('https://management-system-1-884g.onrender.com/api/assignments', { headers })
         ]);
         setEngineers(await engRes.json());
         setProjects(await projRes.json());
@@ -69,7 +69,7 @@ const Assignments = () => {
     };
     try {
       if (editingAssignment) {
-        const res = await fetch(`http://localhost:5000/api/assignments/${editingAssignment.id}`, {
+        const res = await fetch(`https://management-system-1-884g.onrender.com/api/assignments/${editingAssignment.id}`, {
           method: 'PUT',
           headers,
           body: JSON.stringify({ ...formData, allocation: parseInt(formData.allocation) })
@@ -79,7 +79,7 @@ const Assignments = () => {
         setAssignments(assignments.map(a => a.id === updated.id ? updated : a));
         toast({ title: 'Assignment updated', description: 'Assignment has been updated successfully.' });
       } else {
-        const res = await fetch('http://localhost:5000/api/assignments', {
+        const res = await fetch('https://management-system-1-884g.onrender.com/api/assignments', {
           method: 'POST',
           headers,
           body: JSON.stringify({ ...formData, allocation: parseInt(formData.allocation) })
@@ -112,7 +112,7 @@ const Assignments = () => {
     const token = localStorage.getItem('token');
     const headers = { 'Authorization': `Bearer ${token}` };
     try {
-      const res = await fetch(`http://localhost:5000/api/assignments/${id}`, {
+      const res = await fetch(`https://management-system-1-884g.onrender.com/api/assignments/${id}`, {
         method: 'DELETE',
         headers
       });

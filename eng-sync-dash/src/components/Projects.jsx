@@ -52,7 +52,7 @@ const Projects = () => {
       try {
         const token = localStorage.getItem('token');
         const headers = { 'Authorization': `Bearer ${token}` };
-        const res = await fetch('http://localhost:5000/api/projects', { headers });
+        const res = await fetch('https://management-system-1-884g.onrender.com/api/projects', { headers });
         const data = await res.json();
         setProjects(data);
         setFilteredProjects(data);
@@ -87,7 +87,7 @@ const Projects = () => {
     };
     try {
       if (editingProject) {
-        const res = await fetch(`http://localhost:5000/api/projects/${editingProject.id}`, {
+        const res = await fetch(`https://management-system-1-884g.onrender.com/api/projects/${editingProject.id}`, {
           method: 'PUT',
           headers,
           body: JSON.stringify({ ...formData, technologies: formData.technologies.split(',').map(s => s.trim()) })
@@ -98,7 +98,7 @@ const Projects = () => {
         setFilteredProjects(projects.map(p => p.id === updated.id ? updated : p));
         toast({ title: 'Project updated', description: 'Project information has been updated successfully.' });
       } else {
-        const res = await fetch('http://localhost:5000/api/projects', {
+        const res = await fetch('https://management-system-1-884g.onrender.com/api/projects', {
           method: 'POST',
           headers,
           body: JSON.stringify({ ...formData, technologies: formData.technologies.split(',').map(s => s.trim()) })
@@ -128,7 +128,7 @@ const Projects = () => {
     const token = localStorage.getItem('token');
     const headers = { 'Authorization': `Bearer ${token}` };
     try {
-      const res = await fetch(`http://localhost:5000/api/projects/${id}`, {
+      const res = await fetch(`https://management-system-1-884g.onrender.com/api/projects/${id}`, {
         method: 'DELETE',
         headers
       });

@@ -20,8 +20,8 @@ const Capacity = () => {
         const headers = { Authorization: `Bearer ${token}` };
 
         const [engRes, statsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/engineers', { headers }),
-          fetch('http://localhost:5000/api/dashboard/stats', { headers })
+          fetch('https://management-system-1-884g.onrender.com/api/engineers', { headers }),
+          fetch('https://management-system-1-884g.onrender.com/api/dashboard/stats', { headers })
         ]);
 
         const engineers = await engRes.json();

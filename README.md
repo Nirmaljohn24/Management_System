@@ -65,3 +65,12 @@ npm install
 
 # Start development server
 npm run dev
+
+## Backend Setup (Node.js)
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+nodemon server.js   
